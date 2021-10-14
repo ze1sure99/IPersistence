@@ -1,5 +1,6 @@
 package com.ze1sure99;
 
+import com.ze1sure99.dao.IUserDao;
 import com.ze1sure99.io.Resources;
 import com.ze1sure99.pojo.User;
 import com.ze1sure99.sqlSession.SqlSession;
@@ -43,8 +44,14 @@ public class IPersistence_test {
         user.setUsername("lucy");
 //        User user2 = sqlSession.selectOne("user.selectOne", user);
 //        System.out.println(user2);
-        List<User> users = sqlSession.selectList("user.selectList");
-        for (User user1: users) {
+//        List<User> users = sqlSession.selectList("user.selectList");
+//        for (User user1: users) {
+//            System.out.println(user1);
+//        }
+        IUserDao  userDao = sqlSession.getMapper(IUserDao.class);
+//        User user1 = userDao.findByCondition(user);
+        List<User> all = userDao.findAll();//all.f快捷键
+        for (User user1 : all) {
             System.out.println(user1);
         }
     }
