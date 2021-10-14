@@ -1,0 +1,18 @@
+<mapper namespace="user">
+    <!--sql的唯一标识:namespace和id来组成 statementID-->
+    <!--resultType把sql返回的结果封装成对应的实体-->
+    <select id="selectList" resultType="com.ze1sure99.pojo.User">
+        select * from user
+    </select>
+
+    <!--
+      User user = new User();
+      user.setId(1);
+      user.setUsername=("zhangsan");
+      此处resultType 和 paramterType="com.ze1sure99.pojo.user"
+      #{}为自定义占位符
+    -->
+    <select id="selectOne" resultType="com.ze1sure99.pojo.User"  paramterType="com.ze1sure99.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+</mapper>
