@@ -52,10 +52,10 @@ public class simpleExecutor implements Executor{
         // 拿到返回结果的全路径
         String resultType = mappedStatement.getResultType();
         Class<?> resultTypeClass = getClassType(resultType);
-        Object o = resultTypeClass.newInstance();
         ArrayList<Object> objects = new ArrayList<>();
         //6.封装返回结果集
         while (resultSet.next()){
+            Object o = resultTypeClass.newInstance();
            //元数据  取元数据是因为元数据中包含数据库中查询结果的字段名
             ResultSetMetaData metaData = resultSet.getMetaData();
             for (int i = 1; i <=metaData.getColumnCount() ; i++) {

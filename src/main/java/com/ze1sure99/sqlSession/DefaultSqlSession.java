@@ -4,7 +4,10 @@ import com.ze1sure99.pojo.Configuration;
 import com.ze1sure99.pojo.MappedStatement;
 
 import java.beans.IntrospectionException;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -33,5 +36,18 @@ public class DefaultSqlSession implements SqlSession {
             throw new RuntimeException("查询结果为空或者查询结果过多");
         }
 
+    }
+
+    @Override
+    public <T> T getMapper(Class<?> mapperClass) {
+        //使用jdk动态代理来为Dao接口生成代理对象，并返回
+        Object proxyInstance = Proxy.newProxyInstance(DefaultSqlSession.class.getClassLoader(), new Class[]{mapperClass}, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                //无论如何封装，底层都还是实现jdbc代码 // 根据不同情况
+                return null;
+            }
+        });
+        return (T) proxyInstance;
     }
 }
