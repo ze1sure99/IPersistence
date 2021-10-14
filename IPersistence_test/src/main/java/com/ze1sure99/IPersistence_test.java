@@ -13,6 +13,7 @@ import java.beans.PropertyVetoException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class IPersistence_test {
     @Test
@@ -42,8 +43,10 @@ public class IPersistence_test {
         user.setUsername("lucy");
 //        User user2 = sqlSession.selectOne("user.selectOne", user);
 //        System.out.println(user2);
-
-
+        List<User> users = sqlSession.selectList("user.selectList");
+        for (User user1: users) {
+            System.out.println(user1);
+        }
     }
 
 }

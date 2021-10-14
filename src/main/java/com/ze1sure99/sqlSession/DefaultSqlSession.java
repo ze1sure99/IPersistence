@@ -7,7 +7,6 @@ import java.beans.IntrospectionException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
 public class DefaultSqlSession implements SqlSession {
     private Configuration configuration;
@@ -22,7 +21,6 @@ public class DefaultSqlSession implements SqlSession {
         simpleExecutor simpleExecutor = new simpleExecutor();
         MappedStatement mappedStatement = configuration.getMappedStatementMap().get(statementid);
         List<Object> list = simpleExecutor.query(configuration, mappedStatement, params);
-
         return (List<E>) list;
     }
 
