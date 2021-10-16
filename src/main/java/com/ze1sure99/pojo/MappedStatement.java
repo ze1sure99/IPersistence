@@ -1,5 +1,7 @@
 package com.ze1sure99.pojo;
 
+
+//一个mappedStatement对应一个select结果集
 public class MappedStatement {
     public String getId() {
         return id;

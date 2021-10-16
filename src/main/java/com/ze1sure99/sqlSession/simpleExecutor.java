@@ -101,9 +101,7 @@ public class simpleExecutor implements Executor{
         String parseSql = genericTokenParser.parse(sql);
         //#{}里面解析出来的参数名称
         List<ParameterMapping> parameterMappings = parameterMappingTokenHandler.getParameterMappings();
-
         BoundSql boundSql = new BoundSql(parseSql,parameterMappings);
-
         return  boundSql;
 
     }
