@@ -6,9 +6,7 @@
         <property name="username" value="root"></property>
         <property name="password" value="Zzx970331"></property>
     </dataSource>
-
     <!--存放mapper.xml的全路径-->
     <mapper resource="UserMapper.xml">
-
     </mapper>
 </configuration>

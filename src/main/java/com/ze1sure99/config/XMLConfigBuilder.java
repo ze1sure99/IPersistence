@@ -41,15 +41,17 @@ public class XMLConfigBuilder {
             String value = element.attributeValue("value");
             properties.setProperty(name,value);
         }
+        //连接池
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setDriverClass(properties.getProperty("driverClass"));
         comboPooledDataSource.setJdbcUrl(properties.getProperty("jdbcUrl"));
         comboPooledDataSource.setUser(properties.getProperty("username"));
         comboPooledDataSource.setPassword(properties.getProperty("password"));
-
+        //填充 configuration
         configuration.setDataSource(comboPooledDataSource);
 
         //mapper.xml解析:拿到路径--字节输入流--dom4j进行解析
+        //mapper 部分
         List<Element> mapperList = rootElement.selectNodes("//mapper");
         for (Element elment: mapperList) {
             String mapperPath = elment.attributeValue("resource");

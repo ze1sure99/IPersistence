@@ -33,6 +33,7 @@ public class XMLMapperBuilder {
             mappedStatement.setResultType(resultType);
             mappedStatement.setSql(sqlTrim);
             String key = namespace + "." + id;
+            //填充 configuration
             configuration.getMappedStatementMap().put(key,mappedStatement);
         }
 
